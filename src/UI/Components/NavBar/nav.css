@@ -1,0 +1,12 @@
+nav {
+    color: white;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+}
+button {
+    height: 50px;
+    font-size: 24px;
+    border: none;
+    border-radius: 5px;
+}

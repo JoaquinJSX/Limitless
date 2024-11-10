@@ -1,0 +1,10 @@
+.expenses table {
+    margin: 20px auto;
+}
+.expenses th {
+    width: 250px;
+    height: 25px;
+}
+.expenses td {
+    text-align: center;
+}
