@@ -16,3 +16,9 @@
     margin-top: 15px;
     background-color: hsl(120, 40%, 69%);
 }
+.add-income input {
+    background-color: lightgrey;
+    border: none;
+    outline: none;
+    text-align: center;
+}
