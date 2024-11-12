@@ -9,4 +9,9 @@ button {
     font-size: 24px;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
+}
+.active {
+    background-color: #626262;
+    color: white;
 }

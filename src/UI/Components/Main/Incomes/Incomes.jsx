@@ -3,29 +3,22 @@ import './Incomes.css';
 
 export default function Incomes({ incomes, setIncomes }) {
 
-    const [isShowingExpenses, setIsShowingExpenses] = useState(true);
+    const [isShowingIncomes, setIsShowingIncomes] = useState(true);
     const [newIncome, setNewIncome] = useState({
         day: null,
         amount: null,
-        currency: null,
-        source: null
+        currency: 'Soles',
+        source: 'Launch'
     });
 
     function padStart(number) {
         return (number < 10 ? '0' : '') + number;
     }
 
-    function addNewIncome() {
-        if (newIncome.day && newIncome.amount && newIncome.currency && newIncome.source) {
-            setIncomes(i => [...i, newIncome]);
-            setIsShowingExpenses(true);
-        }
-    }
-
     return (
         <div className='incomes'>
-            {isShowingExpenses ?
-                <div>
+            {isShowingIncomes ?
+                <div className='incomesContainer'>
                     <table>
                         <tr style={{ backgroundColor: "gray", color: "black" }}>
                             <th>Day</th>
@@ -43,7 +36,7 @@ export default function Incomes({ incomes, setIncomes }) {
                     </table>
                     <button
                         className='add'
-                        onClick={() => setIsShowingExpenses(false)}
+                        onClick={() => setIsShowingIncomes(false)}
                     >
                         +
                     </button>
@@ -87,22 +80,29 @@ export default function Incomes({ incomes, setIncomes }) {
                                     name="sourceOfMoney"
                                     onChange={e => setNewIncome(i => ({ ...i, source: e.target.value }))}
                                 >
-                                    <option value="Launch">Launch</option>
-                                    <option value="Drugs">Drugs</option>
-                                    <option value="Bitchs">Bitchs</option>
+                                    <option value="Salary">Salary</option>
+                                    <option value="Food vaucher">Food vaucher</option>
+                                    <option value="Perquisites">Perquisites</option>
                                     <option value="Others">Others</option>
                                 </select>
                             </td>
                         </tr>
                     </table>
                     <button
+                        className='save'
+                        onClick={() => {
+                            setIncomes(i => [...i, newIncome]);
+                            setIsShowingIncomes(true);
+                        }}
+                    >
+                        Save
+                    </button>
+                    <button
                         className='cancel'
-                        onClick={() => setIsShowingExpenses(true)}
+                        onClick={() => setIsShowingIncomes(true)}
                     >
                         Cancel
                     </button>
-                    <button onClick={addNewIncome}>Save</button>
-                    <p style={{ color: 'white' }}>{newIncome.currency}</p>
                 </div>}
         </div>
     );

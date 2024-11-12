@@ -1,3 +1,7 @@
+.expensesContainer {
+    display: grid;
+    grid-template-columns: 1fr 50px;
+}
 .expenses table {
     margin: 20px auto;
 }
@@ -6,5 +10,35 @@
     height: 25px;
 }
 .expenses td {
+    text-align: center;
+}
+.expenses .add {
+    width: 35px;
+    height: 35px;
+    margin-top: 15px;
+    margin-right: 20px;
+    background-color: hsl(120, 40%, 69%);
+}
+.expenses .save, .cancel {
+    width: 75px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.expenses .save {
+    background-color: hsl(111, 34%, 65%);
+    margin-left: 560px;
+}
+.expenses .cancel {
+    background-color: red;
+    margin-left: 10px;
+}
+.expenses h3 {
+    text-align: center;
+    font-weight: 700;
+}
+.add-expense input {
+    background-color: lightgrey;
+    border: none;
+    outline: none;
     text-align: center;
 }
