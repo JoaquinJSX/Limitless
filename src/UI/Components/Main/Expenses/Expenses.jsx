@@ -4,7 +4,7 @@ import './Expenses.css';
 export default function Expenses({ expenses, setExpenses }) {
 
     const [isShowingExpenses, setIsShowingExpenses] = useState(true);
-    const [newExpense, setNewExpense] = useState({ day: null, amount: null, currency: 'Soles', to: 'Bitchs' })
+    const [newExpense, setNewExpense] = useState({ day: null, amount: null, currency: 'Soles', to: 'Launch' })
 
     function saveExpense(e) {
         if (newExpense.amount == null) {
@@ -12,7 +12,17 @@ export default function Expenses({ expenses, setExpenses }) {
         } else {
             setExpenses(i => [...i, newExpense]);
             setIsShowingExpenses(true);
+            resetValues();
         }
+    }
+
+    function resetValues() {
+        setNewExpense({
+            day: '',
+            amount: '',
+            currency: 'Soles',
+            to: 'Launch'
+        })
     }
 
     return (
@@ -73,7 +83,6 @@ export default function Expenses({ expenses, setExpenses }) {
                                     onChange={e => setNewExpense(i => ({ ...i, currency: e.target.value }))}
                                 >
                                     <option value="Soles">Soles</option>
-                                    <option value="Dolars">Dolars</option>
                                 </select>
                             </td>
                             <td>
@@ -81,9 +90,13 @@ export default function Expenses({ expenses, setExpenses }) {
                                     name="sourceOfMoney"
                                     onChange={e => setNewExpense(i => ({ ...i, to: e.target.value }))}
                                 >
-                                    <option value="Salary">Salary</option>
-                                    <option value="Food vaucher">Food vaucher</option>
-                                    <option value="Perquisites">Perquisites</option>
+                                    <option value="Launch">Launch</option>
+                                    <option value="Toiletries">Toiletries</option>
+                                    <option value="Articles of clothing">Articles of clothing</option>
+                                    <option value="Internet">Internet</option>
+                                    <option value="Books">Books</option>
+                                    <option value="Investments">Investments</option>
+                                    <option value="Bitchs">Bitchs</option>
                                     <option value="Others">Others</option>
                                 </select>
                             </td>

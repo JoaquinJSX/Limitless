@@ -8,7 +8,7 @@ export default function Incomes({ incomes, setIncomes }) {
         day: null,
         amount: null,
         currency: 'Soles',
-        source: 'Launch'
+        source: 'Salary'
     });
 
     function padStart(number) {
@@ -20,6 +20,16 @@ export default function Incomes({ incomes, setIncomes }) {
             return number;
         } else {
             return `${number}.00`;
+        }
+    }
+
+    function saveIncome(e) {
+        if (newIncome.amount == null) {
+            e.preventDefault();
+        } else {
+            setIncomes(i => [...i, newIncome]);
+            setIsShowingIncomes(true);
+            resetValues();
         }
     }
 
@@ -94,7 +104,6 @@ export default function Incomes({ incomes, setIncomes }) {
                                     onChange={e => setNewIncome(i => ({ ...i, currency: e.target.value }))}
                                 >
                                     <option value="Soles">Soles</option>
-                                    <option value="Dolars">Dolars</option>
                                 </select>
                             </td>
                             <td>
@@ -105,6 +114,8 @@ export default function Incomes({ incomes, setIncomes }) {
                                     <option value="Salary">Salary</option>
                                     <option value="Food vaucher">Food vaucher</option>
                                     <option value="Perquisites">Perquisites</option>
+                                    <option value="Investment commissions">Investment commissions</option>
+                                    <option value="Bonuses">Bonuses</option>
                                     <option value="Others">Others</option>
                                 </select>
                             </td>
@@ -112,11 +123,7 @@ export default function Incomes({ incomes, setIncomes }) {
                     </table>
                     <button
                         className='save'
-                        onClick={() => {
-                            setIncomes(i => [...i, newIncome]);
-                            setIsShowingIncomes(true);
-                            resetValues();
-                        }}
+                        onClick={saveIncome}
                     >
                         Save
                     </button>
