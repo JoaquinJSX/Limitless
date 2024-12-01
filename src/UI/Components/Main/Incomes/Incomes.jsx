@@ -24,12 +24,12 @@ export default function Incomes({ incomes, setIncomes }) {
     }
 
     function saveIncome(e) {
-        if (newIncome.amount == null) {
-            e.preventDefault();
-        } else {
+        if (newIncome.day != null && newIncome.amount != null) {
             setIncomes(i => [...i, newIncome]);
             setIsShowingIncomes(true);
             resetValues();
+        } else {
+            e.preventDefault();
         }
     }
 

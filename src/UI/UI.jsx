@@ -21,7 +21,7 @@ export default function UI() {
             case 'MonthExpenses':
                 return <Expenses expenses={expenses} setExpenses={setExpenses} />
             case 'Relation':
-                return <Relation incomes={incomes} />
+                return <Relation incomes={incomes} expenses={expenses}/>
             case 'Goals':
                 return <Goals />
         }

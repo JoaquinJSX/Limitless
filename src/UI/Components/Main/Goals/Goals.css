@@ -1,3 +1,13 @@
 .goals li {
     color: white;
 }
+.goals .add {
+    width: 35px;
+    height: 35px;
+    margin-left: 1225px;
+    margin-top: 20px;
+    background-color: hsl(120, 40%, 69%);
+}
+.goals h2 {
+    color: white;
+}

@@ -7,12 +7,24 @@ export default function Expenses({ expenses, setExpenses }) {
     const [newExpense, setNewExpense] = useState({ day: null, amount: null, currency: 'Soles', to: 'Launch' })
 
     function saveExpense(e) {
-        if (newExpense.amount == null) {
-            e.preventDefault();
-        } else {
+        if (newExpense.day != null && newExpense.day != 0 && newExpense.amount != null) {
             setExpenses(i => [...i, newExpense]);
             setIsShowingExpenses(true);
             resetValues();
+        } else {
+            e.preventDefault();
+        }
+    }
+
+    function padStart(number) {
+        return (number < 10 ? '0' : '') + number;
+    }
+
+    function setDecimal(number) {
+        if (number % 1 !== 0) {
+            return number;
+        } else {
+            return `${number}.00`;
         }
     }
 
@@ -39,8 +51,8 @@ export default function Expenses({ expenses, setExpenses }) {
                             </thead>
                             {expenses.map((expense, index) =>
                                 <tbody key={index} style={{ backgroundColor: "lightgrey", color: "black" }}>
-                                    <td>{expense.day}</td>
-                                    <td>{expense.amount}</td>
+                                    <td>{padStart(expense.day)}</td>
+                                    <td>{setDecimal(expense.amount)}</td>
                                     <td>{expense.currency}</td>
                                     <td>{expense.to}</td>
                                 </tbody>)}
