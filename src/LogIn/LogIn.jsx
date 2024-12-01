@@ -1,7 +1,7 @@
 import './logIn.css';
 import { useNavigate } from 'react-router-dom';
  
-function LogIn(){
+function LogIn({email, password}){
     const navigate = useNavigate();
 
     return(

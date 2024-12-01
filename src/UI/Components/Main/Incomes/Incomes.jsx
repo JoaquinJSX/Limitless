@@ -15,25 +15,47 @@ export default function Incomes({ incomes, setIncomes }) {
         return (number < 10 ? '0' : '') + number;
     }
 
+    function setDecimal(number) {
+        if (number % 1 !== 0) {
+            return number;
+        } else {
+            return `${number}.00`;
+        }
+    }
+
+    function resetValues() {
+        setNewIncome({
+            day: '',
+            amount: '',
+            currency: 'Soles',
+            source: 'Salary'
+        })
+    }
+
     return (
         <div className='incomes'>
             {isShowingIncomes ?
                 <div className='incomesContainer'>
-                    <table>
-                        <tr style={{ backgroundColor: "gray", color: "black" }}>
-                            <th>Day</th>
-                            <th>Amount</th>
-                            <th>Currency</th>
-                            <th>Source of money</th>
-                        </tr>
-                        {incomes.map((income, index) =>
-                            <tr key={index} style={{ backgroundColor: "lightgrey", color: "black" }}>
-                                <td>{income.day}</td>
-                                <td>{income.amount}</td>
-                                <td>{income.currency}</td>
-                                <td>{income.source}</td>
-                            </tr>)}
-                    </table>
+                    {incomes.length != 0 ?
+                        <table>
+                            <thead>
+                                <tr style={{ backgroundColor: "gray", color: "black" }}>
+                                    <th>Day</th>
+                                    <th>Amount</th>
+                                    <th>Currency</th>
+                                    <th>Source of money</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {incomes.map((income, index) =>
+                                    <tr key={index} style={{ backgroundColor: "lightgrey", color: "black" }}>
+                                        <td>{padStart(income.day)}</td>
+                                        <td>{setDecimal(income.amount)}</td>
+                                        <td>{income.currency}</td>
+                                        <td>{income.source}</td>
+                                    </tr>)}
+                            </tbody>
+                        </table> : <h2 style={{ color: 'white', marginTop: '100px' }}>There is no incomes</h2>}
                     <button
                         className='add'
                         onClick={() => setIsShowingIncomes(false)}
@@ -44,13 +66,13 @@ export default function Incomes({ incomes, setIncomes }) {
                 <div className='add-income'>
                     <h3 style={{ color: 'white' }}>Create new income</h3>
                     <table>
-                        <tr style={{ backgroundColor: "gray", color: "black" }}>
+                        <thead style={{ backgroundColor: "gray", color: "black" }}>
                             <th>Day</th>
                             <th>Amount</th>
                             <th>Currency</th>
                             <th>Source of money</th>
-                        </tr>
-                        <tr style={{ backgroundColor: "lightgrey", color: "black" }}>
+                        </thead>
+                        <tbody style={{ backgroundColor: "lightgrey", color: "black" }}>
                             <td>
                                 <input
                                     type="number"
@@ -86,13 +108,14 @@ export default function Incomes({ incomes, setIncomes }) {
                                     <option value="Others">Others</option>
                                 </select>
                             </td>
-                        </tr>
+                        </tbody>
                     </table>
                     <button
                         className='save'
                         onClick={() => {
                             setIncomes(i => [...i, newIncome]);
                             setIsShowingIncomes(true);
+                            resetValues();
                         }}
                     >
                         Save

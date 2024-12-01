@@ -9,20 +9,21 @@ import { createContext, useState } from "react";
 export const contentContext = createContext();
 
 export default function UI() {
-    const [sectionDisplayed, setSectionDisplayed] = useState('Income');
-    const [incomes, setIncomes] = useState([{day: '12', amount: 3123, currency: 'Soles', source: 'Salary'}]);
-    const [expenses, setExpenses] = useState([{day: '', amount: 0, currency: 'Soles', to: 'Launch'}]);
+    const [sectionDisplayed, setSectionDisplayed] = useState('Incomes');
+    const [incomes, setIncomes] = useState([]);
+    const [expenses, setExpenses] = useState([]);
 
     function displayContent() {
+
         switch (sectionDisplayed) {
             case 'Incomes':
-                return <Incomes incomes={incomes} setIncomes={setIncomes}/>
+                return <Incomes incomes={incomes} setIncomes={setIncomes} />
             case 'MonthExpenses':
-                return <Expenses expenses={expenses} setExpenses={setExpenses}/>  
+                return <Expenses expenses={expenses} setExpenses={setExpenses} />
             case 'Relation':
-                return <Relation incomes={incomes}/>   
+                return <Relation incomes={incomes} />
             case 'Goals':
-                return <Goals />      
+                return <Goals />
         }
     }
 

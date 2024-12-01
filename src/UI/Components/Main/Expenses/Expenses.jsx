@@ -4,27 +4,37 @@ import './Expenses.css';
 export default function Expenses({ expenses, setExpenses }) {
 
     const [isShowingExpenses, setIsShowingExpenses] = useState(true);
-    const [newExpense, setNewExpense] = useState({ day: '', amount: 0, currency: 'Soles', to: 'Bitchs' })
+    const [newExpense, setNewExpense] = useState({ day: null, amount: null, currency: 'Soles', to: 'Bitchs' })
+
+    function saveExpense(e) {
+        if (newExpense.amount == null) {
+            e.preventDefault();
+        } else {
+            setExpenses(i => [...i, newExpense]);
+            setIsShowingExpenses(true);
+        }
+    }
 
     return (
         <div className="expenses">
             {isShowingExpenses ?
                 <div className="expensesContainer">
-                    <table>
-                        <tr style={{ backgroundColor: "gray", color: "black" }}>
-                            <th>Day</th>
-                            <th>Amount</th>
-                            <th>Currency</th>
-                            <th>To</th>
-                        </tr>
-                        {expenses.map((expense, index) =>
-                            <tr key={index} style={{ backgroundColor: "lightgrey", color: "black" }}>
-                                <td>{expense.day}</td>
-                                <td>{expense.amount}</td>
-                                <td>{expense.currency}</td>
-                                <td>{expense.to}</td>
-                            </tr>)}
-                    </table>
+                    {expenses.length != 0 ?
+                        <table>
+                            <thead style={{ backgroundColor: "gray", color: "black" }}>
+                                <th>Day</th>
+                                <th>Amount</th>
+                                <th>Currency</th>
+                                <th>To</th>
+                            </thead>
+                            {expenses.map((expense, index) =>
+                                <tbody key={index} style={{ backgroundColor: "lightgrey", color: "black" }}>
+                                    <td>{expense.day}</td>
+                                    <td>{expense.amount}</td>
+                                    <td>{expense.currency}</td>
+                                    <td>{expense.to}</td>
+                                </tbody>)}
+                        </table> : <h2 style={{ color: 'white', marginTop: '100px' }}>There is no expenses</h2>}
                     <button
                         className='add'
                         onClick={() => setIsShowingExpenses(false)}
@@ -35,13 +45,13 @@ export default function Expenses({ expenses, setExpenses }) {
                 <div className='add-expense'>
                     <h3 style={{ color: 'white' }}>Create new expense</h3>
                     <table>
-                        <tr style={{ backgroundColor: "gray", color: "black" }}>
+                        <thead style={{ backgroundColor: "gray", color: "black" }}>
                             <th>Day</th>
                             <th>Amount</th>
                             <th>Currency</th>
                             <th>To</th>
-                        </tr>
-                        <tr style={{ backgroundColor: "lightgrey", color: "black" }}>
+                        </thead>
+                        <tbody style={{ backgroundColor: "lightgrey", color: "black" }}>
                             <td>
                                 <input
                                     type="number"
@@ -77,14 +87,11 @@ export default function Expenses({ expenses, setExpenses }) {
                                     <option value="Others">Others</option>
                                 </select>
                             </td>
-                        </tr>
+                        </tbody>
                     </table>
                     <button
                         className='save'
-                        onClick={() => {
-                            setExpenses(i => [...i, newExpense]);
-                            setIsShowingExpenses(true);
-                        }}
+                        onClick={saveExpense}
                     >
                         Save
                     </button>
