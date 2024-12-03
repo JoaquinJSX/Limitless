@@ -24,7 +24,25 @@ export default function Goals() {
                         <h2>There is no goals to show.</h2>}
                 </div> :
                 <div className='create-goal-field'>
-                    new Goal<input type='text' placeholder='Enter a goal'/>
+                    <button className='quit'>x</button>
+                    <h2>Write a new goal</h2>
+                    <div className='input-field'>
+                        <input type='text'
+                         placeholder='Enter a goal'
+                         value={newGoal}
+                         onChange={e => setNewGoal(e.target.value)}
+                        />
+                        <button
+                            className='add-goal'
+                            onClick={() => {
+                                setGoals(g => [...g, newGoal]);
+                                setIsShowingGoals(true);
+                                setNewGoal('');
+                            }}
+                        >
+                            Add
+                        </button>
+                    </div>
                 </div>}
         </div>
     );

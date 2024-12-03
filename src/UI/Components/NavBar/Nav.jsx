@@ -9,7 +9,7 @@ export default function NavBar() {
     return (
         <nav>
             <button
-                className={activeSection == 'Income' ? 'active' : ''}
+                className={activeSection == 'Income' ? 'active' : 'default'}
                 onClick={() => {
                     setContentDisplayed('Incomes');
                     setActiveSection('Income');
@@ -18,7 +18,7 @@ export default function NavBar() {
                 Incomes
             </button>
             <button
-                className={activeSection == 'Expenses' ? 'active' : ''}
+                className={activeSection == 'Expenses' ? 'active' : 'default'}
                 onClick={() => {
                     setContentDisplayed('MonthExpenses');
                     setActiveSection('Expenses');
@@ -27,7 +27,7 @@ export default function NavBar() {
                 Expenses
             </button>
             <button
-                className={activeSection == 'Relation' ? 'active' : ''}
+                className={activeSection == 'Relation' ? 'active' : 'default'}
                 onClick={() => {
                     setContentDisplayed('Relation');
                     setActiveSection('Relation');
@@ -36,7 +36,7 @@ export default function NavBar() {
                 Relation Incomes/Expenses
             </button>
             <button
-                className={activeSection == 'Goals' ? 'active' : ''}
+                className={activeSection == 'Goals' ? 'active' : 'default'}
                 onClick={() => {
                     setContentDisplayed('Goals');
                     setActiveSection('Goals');

@@ -1,13 +1,46 @@
 .goals li {
     color: white;
+    font-size: 18px;
+    font-weight: 400;
 }
 .goals .add {
     width: 35px;
     height: 35px;
     margin-left: 1225px;
     margin-top: 20px;
-    background-color: hsl(120, 40%, 69%);
+    background-color: hsl(120, 40%, 69%);border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
 }
 .goals h2 {
     color: white;
+}
+.goals .create-goal-field {
+    text-align: center;
+}
+.goals input {
+    height: 30px;
+    width: 300px;
+    font-size: 15px;
+}
+.goals .quit {
+    margin-left: 1225px;
+    margin-top: 20px;
+    height: 40px;
+    width: 40px;
+    background-color: hsl(0, 53%, 54%);
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+}
+.goals .add-goal {
+    margin-left: 5px;
+    height: 35px;
+    border-radius: 3px;
+    border: none;
+    background-color: rgb(103, 186, 103);
+    font-weight: bold;
+    cursor: pointer;
 }
