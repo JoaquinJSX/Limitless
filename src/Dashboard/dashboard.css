@@ -1,0 +1,55 @@
+.dashboard {
+    background-color: white;
+    height: 99.9vh;
+    display: grid;
+    grid-template-rows: auto auto auto;
+}
+.dashboard img {
+    padding: 0;
+    margin: 0;
+    height: 200px;
+    width: 360px;
+    border-radius: 15px;
+}
+.dashboard h1, h3 {
+    margin: 0;
+    margin-top: 10px;
+}
+.dashboard button {
+    width: 100px;
+    height: 35px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: none;
+    color: rgb(76, 153, 73);
+    font-weight: 600;
+    cursor: pointer;
+}
+.dashboard .logIn-button {
+    margin-top: 5px;
+    margin-right: 20px;
+}
+.dashboard h1 {
+    color: black;
+    margin-left: 300px;
+    text-align: center;
+}
+.dashboard .about {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 240px);
+    text-align: center;
+    gap: 10px;
+}
+.dashboard .about section {
+    border-radius: 15px;
+    background: rgb(242, 239, 239);
+}
+.dashboard header {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+}
+.dashboard footer {
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
