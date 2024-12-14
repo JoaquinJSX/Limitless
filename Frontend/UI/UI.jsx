@@ -8,7 +8,7 @@ import { createContext, useState } from "react";
 
 export const contentContext = createContext();
 
-export default function UI() {
+export default function UI({users, userAccount}) {
     const [sectionDisplayed, setSectionDisplayed] = useState('Incomes');
     const [incomes, setIncomes] = useState([]);
     const [expenses, setExpenses] = useState([]);
@@ -29,7 +29,7 @@ export default function UI() {
 
     return (
         <div>
-            <Header />
+            <Header users={users} userAccount={userAccount}/>
             <contentContext.Provider value={setSectionDisplayed}>
                 <NavBar />
             </contentContext.Provider>
