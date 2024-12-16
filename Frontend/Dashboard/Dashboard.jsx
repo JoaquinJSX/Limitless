@@ -5,13 +5,7 @@ import goals from './Images/goals-image.jpg';
 import incomes from './Images/incomes-image.jpg';
 import expenses from './Images/expense-image.jpg';
 
-export default function Dashboard({setUsers}) {
-
-    function fetchUsers() {
-        fetch("http://127.0.0.1:5000/users")
-        .then(response => response.json())
-        .then(data => setUsers(data.users));
-    }
+export default function Dashboard() {
 
     const navigate = useNavigate();
 
@@ -22,7 +16,6 @@ export default function Dashboard({setUsers}) {
                 <div className="buttons">
                     <button className='logIn-button'
                     onClick={() => {
-                        fetchUsers();
                         navigate('/log-in');
                     }}
                     >
@@ -31,7 +24,6 @@ export default function Dashboard({setUsers}) {
                     <button
                         className='signUp-button'
                         onClick={() => {
-                            fetchUsers();
                             navigate('/sign-up');
                         }}
                     >
